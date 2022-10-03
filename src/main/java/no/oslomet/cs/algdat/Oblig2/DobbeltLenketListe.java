@@ -37,11 +37,35 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-        throw new UnsupportedOperationException();
+        hode = null;
+        hale = null;
+        antall = 0;
+        endringer = 0;
     }
 
     public DobbeltLenketListe(T[] a) {
-        throw new UnsupportedOperationException();
+        if (a == null) {// sjekk a
+            throw new UnsupportedOperationException("Tabellen er en null!!");
+        }
+
+        Node<T> tidligereNode  = null;
+        Node<T> nyNode = null;
+
+        for (T verdi : a){
+            if (verdi == null)
+                continue;
+            antall ++;
+            nyNode = new Node<>(verdi, tidligereNode, null);
+
+            if (tidligereNode != null){
+                tidligereNode.neste = nyNode;
+            } else {
+                hode = nyNode;
+            }
+            tidligereNode = nyNode;
+        }
+        //endering
+        hale = nyNode;
     }
 
     public Liste<T> subliste(int fra, int til) {
@@ -50,12 +74,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int antall() {
-        throw new UnsupportedOperationException();
+        //retunerer antall verdier
+        return antall;
     }
 
     @Override
     public boolean tom() {
-        throw new UnsupportedOperationException();
+        //returnere true/false avhengig av om listen er tom eller ikke
+        if (antall() == 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

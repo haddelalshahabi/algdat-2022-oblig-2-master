@@ -14,7 +14,7 @@ public interface Beholder<T> extends Iterable<T> {
     public int antall();               // returnerer antallet i beholderen
 
     public boolean tom();              // sjekker om beholderen er tom
-
+//
     public void nullstill();           // tømmer beholderen
 
     public Iterator<T> iterator();     // returnerer en iterator

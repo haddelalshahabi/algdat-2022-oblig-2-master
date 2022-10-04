@@ -15,6 +15,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
      *
      * @param <T>
      */
+
     private static final class Node<T> {
         private T verdi;                   // nodens verdi
         private Node<T> forrige, neste;    // pekere
@@ -30,7 +31,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
     }
 
-    // instansvariabler
+    //instansvariabler
     private Node<T> hode;          // peker til den første i listen
     private Node<T> hale;          // peker til den siste i listen
     private int antall;            // antall noder i listen
@@ -43,6 +44,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         endringer = 0;
     }
 
+    //Sjekkliste for konstruktøren DobbeltLenketListe(T[])
     public DobbeltLenketListe(T[] a) {
         if (a == null) {// sjekk a
             throw new UnsupportedOperationException("Tabellen er en null!!");

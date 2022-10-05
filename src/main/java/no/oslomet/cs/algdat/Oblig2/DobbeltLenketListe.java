@@ -202,7 +202,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             throw new NoSuchElementException("Liste er tomt");
 
         }
-            Node<T> slett = prøvNode(index);
+            Node<T> slett = provNode(index);
 
         if (slett == null) {
                 return null;
@@ -231,12 +231,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
 
-        //  throw new UnsupportedOperationException();
+
 
 
     @Override
+    //oppgave 7
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        Node<T> v = hode, q = hale;
+        while (v != null){
+            v= q.neste = null;
+            q.verdi = null;
+            q=v;
+        }
+
+        hode= hale = null;
+        antall = 0;
+        endringer++;
+        //throw new UnsupportedOperationException();
     }
 
     //Oppgave 2 a)

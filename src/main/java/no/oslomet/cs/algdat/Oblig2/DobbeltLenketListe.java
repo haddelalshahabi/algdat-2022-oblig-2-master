@@ -6,6 +6,7 @@ package no.oslomet.cs.algdat.Oblig2;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -92,12 +93,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {
-
-        throw new UnsupportedOperationException();
+        //oppgave 2 b)
+        Objects.requireNonNull(verdi, "Ikke lov med null-verdier!");
+        if (antall == 0){
+            hode = new Node<>(verdi, null, null);
+            hale = hode;
+        }else{
+            hale.neste = new Node<>(verdi,hale, null);
+            hale = hale.neste;
+        }
+        antall ++;
+        endringer ++;
+        return true;
     }
 
     @Override
     public void leggInn(int indeks, T verdi) {
+        //oppgave 2 b)
         throw new UnsupportedOperationException();
     }
 

@@ -71,17 +71,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         hale = nyNode;
     }
 
+
+
     public Liste<T> subliste(int fra, int til) {
         throw new UnsupportedOperationException();
     }
+    
+
 
     @Override
+    //Oppgave 1
     public int antall() {
         //retunerer antall verdier
         return antall;
     }
 
     @Override
+    //Oppgave 1
     public boolean tom() {
         //returnere true/false avhengig av om listen er tom eller ikke
         if (antall() == 0){
@@ -92,8 +98,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
+    //oppgave 2 b)
     public boolean leggInn(T verdi) {
-        //oppgave 2 b)
         Objects.requireNonNull(verdi, "Ikke lov med null-verdier!");
         if (antall == 0){
             hode = new Node<>(verdi, null, null);
@@ -109,8 +115,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-        //oppgave 2 b)
-        throw new UnsupportedOperationException();
+       /* Objects.requireNonNull(verdi, "Ikke lov med null-verdier!");
+        indeksKontroll(indeks, true);
+        if (indeks == 0 && antall == 0){
+            hode = new Node<>(verdi, null, null);
+            hale = hode;
+            hode.neste = null;
+            hode.forrige = null;
+        } else if (indeks == 0 && antall > 0){
+            hode = finnNode(0);
+            Node<T> current
+        }
+
+        */
     }
 
     @Override

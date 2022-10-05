@@ -6,6 +6,7 @@ package no.oslomet.cs.algdat.Oblig2;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 
@@ -134,14 +135,87 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
+    //Oppgave 6 del1
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
-    }
+        if (verdi == null) {
+            return false;
+        }
+            Node<T> slett = null;
+            Node<T> Node = hode;
+            while (Node != null) {
+                if (Node.verdi.equals(verdi)) {
+                    slett = Node;
+                    break;
+                } else {
+                    Node = Node.neste;
+                }
+            }
+            if (slett == null) {
+                return false;
+            }
+                slett.verdi = null;
+                if (slett.forrige != null) {
+                    slett.forrige.neste = slett.neste;
+                }
+
+                if (slett.forrige != null) {
+                    slett.neste.forrige = slett.forrige;
+                }
+
+                if (slett == hode && slett.neste != null) {
+                    hode = slett.neste;
+                }
+
+                if (slett == hale && slett.forrige != null) {
+                    hale = slett.forrige;
+                }
+
+                antall--;
+                endringer++;
+                return true;
+
+
+            }
 
     @Override
+    //oppgave 6 del2
     public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
-    }
+        indeksKontroll(indeks, false);
+        if (antall == 0) {
+            throw new NoSuchElementException("Liste er tomt");
+
+        }
+            Node<T> slett = prøvNode(index);
+
+        if (slett == null) {
+                return null;
+        }
+
+        if (slett.forrige != null) {
+            slett.forrige.neste = slett.neste;
+        }
+
+            if (slett.neste != null) {
+                slett.neste.forrige = slett.forrige;
+            }
+
+            if (slett == hode && slett.neste != null) {
+                hode = slett.neste;
+            }
+
+            if (slett == hale && slett.forrige != null) {
+                hale = slett.forrige;
+            }
+
+            antall--;
+            endringer++;
+            return slett.verdi;
+
+        }
+
+
+        //  throw new UnsupportedOperationException();
+
 
     @Override
     public void nullstill() {

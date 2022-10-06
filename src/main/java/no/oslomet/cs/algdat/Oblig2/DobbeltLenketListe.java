@@ -4,10 +4,7 @@ package no.oslomet.cs.algdat.Oblig2;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -360,12 +357,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next() {
+
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
+        public void remove(){
+            Node<T> p,q,r;
+        if(!fjernOK) throw new IllegalStateException("Ulovlig tilstand!");
+        if(endringer != iteratorendringer){
+            throw new ConcurrentModificationException("De er like");
+        }
+        fjernOK = false;
+        if(antall ==1){
+            hode = hale= null;
+        }
+          //  throw new UnsupportedOperationException();
         }
 
     } // class DobbeltLenketListeIterator

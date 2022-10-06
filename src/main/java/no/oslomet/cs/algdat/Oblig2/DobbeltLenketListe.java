@@ -72,10 +72,28 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         hale = nyNode;
     }
 
+    //Lager metoden fratilKontroll
+    public static void fratilKontroll(int antall, int fra, int til){
+        if (fra < 0){
+            throw new IndexOutOfBoundsException("Fra (" + fra + ") er negativ!");
+        }
 
+        if (til > antall){
+            throw new IndexOutOfBoundsException("Til (" + til + ") > antall (" + antall + ")");
+        }
 
+        if (fra > til){
+            throw new IllegalArgumentException("Fra (" + fra + ") > til (" + til + ") - illegalt intervall" );
+        }
+    }
+    //Oppgave 3 b)
     public Liste<T> subliste(int fra, int til) {
-        throw new UnsupportedOperationException();
+        fratilKontroll(antall, fra, til);
+        DobbeltLenketListe<T> plist = new DobbeltLenketListe<>();
+        for (int i = fra; i < til; i++){
+            plist.leggInn(finnNode(i).verdi);
+        }
+        return plist;
     }
     
 
@@ -91,9 +109,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Oppgave 1
     public boolean tom() {
         //returnere true/false avhengig av om listen er tom eller ikke
-
         return antall == 0;
-
     }
 
     @Override
@@ -114,19 +130,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-       /* Objects.requireNonNull(verdi, "Ikke lov med null-verdier!");
-        indeksKontroll(indeks, true);
-        if (indeks == 0 && antall == 0){
-            hode = new Node<>(verdi, null, null);
-            hale = hode;
-            hode.neste = null;
-            hode.forrige = null;
-        } else if (indeks == 0 && antall > 0){
-            hode = finnNode(0);
-            Node<T> current
-        }
 
-        */
     }
 
     @Override
@@ -134,9 +138,37 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    //Hjelpemetoden for oppgave 3 a)
+    private Node<T> finnNode(int indeks){
+        Node<T> nåværende = null;
+        if (indeks == 0 && antall == 1){
+            nåværende = hode;
+            return nåværende;
+        }
+
+        if (indeks == antall-1){
+            return hale;
+        }
+
+        if (indeks <=  (int) antall/2){
+            nåværende = hode;
+            for (int i=0; i < indeks; i++){
+                nåværende = nåværende.neste;
+            }
+        }else {
+            nåværende = hale;
+            for (int j= antall-1; j > indeks; j--){
+                nåværende = nåværende.forrige;
+            }
+        }
+        return nåværende;
+    }
+
+    //Oppgave 3 a)
     @Override
     public T hent(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        return finnNode(indeks).verdi;
     }
 
     @Override
@@ -144,9 +176,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    //Oppgave 3a
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(nyverdi, "Ikke lov med null-verdier!");
+        indeksKontroll(indeks, false);
+        Node<T> v = finnNode(indeks);
+        T forrigeVerdi = v.verdi;
+        v.verdi = nyverdi;
+        endringer ++;
+        return forrigeVerdi;
     }
 
     @Override
@@ -195,12 +234,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     //oppgave 6 del2
     public T fjern(int indeks) {
-       /* indeksKontroll(indeks, false);
+        indeksKontroll(indeks, false);
         if (antall == 0) {
             throw new NoSuchElementException("Liste er tomt");
 
         }
-            Node<T> slett = provNode(index);
+            Node<T> slett = finnNode(indeks);
 
         if (slett == null) {
                 return null;
@@ -225,10 +264,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             antall--;
             endringer++;
             return slett.verdi;
-
-
-        */
-        return null;// må slettes
     }
 
 

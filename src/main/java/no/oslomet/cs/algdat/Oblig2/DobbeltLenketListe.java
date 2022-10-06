@@ -397,6 +397,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
-} // class DobbeltLenketListe
+}
+//Oppgave 10
+
+Public static <T> void sorter (Liste<T> liste, Comparator<? super T> c) {
+for (int i = liste,antall(); i> 0 ; i--){
 
 
+        }
+}

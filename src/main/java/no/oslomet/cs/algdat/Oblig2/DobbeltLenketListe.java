@@ -371,8 +371,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         fjernOK = false;
         if(antall ==1){
             hode = hale= null;
+        } else if (denne == null){
+            hale = hale.forrige;
+            hale.neste= null;
+
+        }else if(denne.forrige == hode){
+            hode = denne;
+            denne.forrige =null;
+        }else{
+            p= denne.forrige;
+            q= p.neste;
+            r= p.forrige;
+            q.forrige = r;
+            r.neste = q;
         }
-          //  throw new UnsupportedOperationException();
+        antall--;
+        endringer++;
+        iteratorendringer++;
+
         }
 
     } // class DobbeltLenketListeIterator

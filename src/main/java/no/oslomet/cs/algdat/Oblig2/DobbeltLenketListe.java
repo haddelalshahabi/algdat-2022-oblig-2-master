@@ -49,7 +49,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Sjekkliste for konstruktøren DobbeltLenketListe(T[])
     public DobbeltLenketListe(T[] a) {
         if (a == null) {// sjekk a
-            throw new UnsupportedOperationException("Tabellen er en null!!");
+            throw new NullPointerException("Tabellen er en null!!");
         }
 
         Node<T> tidligereNode  = null;
@@ -91,11 +91,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //Oppgave 1
     public boolean tom() {
         //returnere true/false avhengig av om listen er tom eller ikke
-        if (antall() == 0){
-            return true;
-        } else {
-            return false;
-        }
+
+        return antall == 0;
+
     }
 
     @Override
@@ -197,7 +195,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     //oppgave 6 del2
     public T fjern(int indeks) {
-        indeksKontroll(indeks, false);
+       /* indeksKontroll(indeks, false);
         if (antall == 0) {
             throw new NoSuchElementException("Liste er tomt");
 
@@ -228,9 +226,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             endringer++;
             return slett.verdi;
 
-        }
 
-
+        */
+        return null;// må slettes
+    }
 
 
 

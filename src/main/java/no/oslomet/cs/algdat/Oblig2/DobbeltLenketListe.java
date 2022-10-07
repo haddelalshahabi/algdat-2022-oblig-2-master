@@ -173,7 +173,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
-    //Oppgave 3a
+    //Oppgave 3 a)
     @Override
     public T oppdater(int indeks, T nyverdi) {
         Objects.requireNonNull(nyverdi, "Ikke lov med null-verdier!");
@@ -361,6 +361,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             throw new UnsupportedOperationException();
         }
 
+        //Oppgave 9 
         @Override
         public void remove(){
             Node<T> p,q,r;
@@ -392,8 +393,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
     }
-    //Oppgave 10
 
+    //Oppgave 10
     public  static  <T> void sorter (Liste<T> liste, Comparator <? super T> c) {
         for (int i = liste.antall(); i> 0 ; i--){
             Iterator<T> iter = liste.iterator();

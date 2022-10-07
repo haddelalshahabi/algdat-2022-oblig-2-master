@@ -400,10 +400,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         @Override
+        // Oppgave 8)a
         public T next() {
-
-            throw new UnsupportedOperationException();
+            if (iteratorendringer != endringer){
+                throw new ConcurrentModificationException("");
+            }
+            if(!hasNext()) throw new NoSuchElementException("Ikke noen verdier!");
+            fjernOK = true;
+            T Verdi = denne.verdi;
+            denne = denne.neste;
+            return Verdi;
         }
+
 
         //Oppgave 9 
         @Override

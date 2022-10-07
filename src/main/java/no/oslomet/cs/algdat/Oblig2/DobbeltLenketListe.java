@@ -422,7 +422,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //Oppgave 9 
         @Override
         public void remove() {
-            Node<T> p, q, r;
+            Node<T> m, n, s;
             if (!fjernOK) throw new IllegalStateException("Ulovlig tilstand!");
             if (endringer != iteratorendringer) {
                 throw new ConcurrentModificationException("De er like");
@@ -438,11 +438,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 hode = denne;
                 denne.forrige = null;
             } else {
-                p = denne.forrige;
-                q = p.neste;
-                r = p.forrige;
-                q.forrige = r;
-                r.neste = q;
+                m = denne.forrige;
+                n = m.neste;
+                s = m.forrige;
+                n.forrige = s;
+                s.neste = n;
             }
             antall--;
             endringer++;

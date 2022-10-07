@@ -129,6 +129,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi, "ikke ta null verdier");
+        /*
+        // MO KODE 5b)
+        if (indeks < 0)
+            throw new IndexOutOfBoundsException("Indeksen er negativ!");
+
+
+        if (antall == 0 && indeks > 0)
+            throw new IndexOutOfBoundsException("Kan ikke legge inn på indeks > 0 i en tom liste!");
+
+        // MO KODE FERDIG
+
+         */
+
         if (indeks == 0 && antall == 0) {
             hode = new Node<>(verdi, null, null);
             hale = hode;

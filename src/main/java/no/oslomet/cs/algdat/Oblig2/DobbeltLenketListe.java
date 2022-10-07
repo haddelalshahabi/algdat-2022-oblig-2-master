@@ -125,6 +125,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return true;
     }
 
+    //Oppgave 5
     @Override
     public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi, "ikke ta null verdier");
@@ -165,11 +166,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     }
 
+    //Oppgave 4
     @Override
     public boolean inneholder(T verdi) {
-        if (indeksTil(verdi) != -1)
+        if (indeksTil(verdi) != -1){
             return true;
-        else return false;
+        } else {
+            return false;
+        }
     }
 
     //Hjelpemetoden for oppgave 3 a)
@@ -207,14 +211,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
-        int posisjonIndex = -1;
+        int posisjonIndeks = -1;
         for (int i = 0; i < antall; i++) {
             if (hent(i).equals(verdi)) {
-                posisjonIndex = i;
+                posisjonIndeks = i;
                 break;
             }
         }
-        return posisjonIndex;
+        return posisjonIndeks;
     }
 
     //Oppgave 3 a)
@@ -367,12 +371,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
+    //Oppgave 8 b)
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException();
+        return new DobbeltLenketListeIterator();
     }
 
+    //Oppgave 8 d)
     public Iterator<T> iterator(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        return new DobbeltLenketListeIterator(indeks);
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T> {
@@ -386,8 +393,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             iteratorendringer = endringer;  // teller endringer
         }
 
+        //Oppgave 8 c)
         private DobbeltLenketListeIterator(int indeks) {
-            throw new UnsupportedOperationException();
+            denne = finnNode(indeks);
+            fjernOK = false;
+            iteratorendringer = endringer;
         }
 
         @Override
@@ -396,7 +406,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         @Override
-        // Oppgave 8)a
+        // Oppgave 8 a)
         public T next() {
             if (iteratorendringer != endringer){
                 throw new ConcurrentModificationException("");

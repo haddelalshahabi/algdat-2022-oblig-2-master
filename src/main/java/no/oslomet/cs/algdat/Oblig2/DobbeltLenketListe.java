@@ -127,12 +127,49 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
+        Objects.requireNonNull(verdi, "ikke ta null verdier");
+        if (indeks == 0 && antall == 0){
+            hode = new Node<>(verdi, null, null);
+            hale = hode;
+            hode.neste = null;
+            hode.forrige = null;
+        } else if (indeks == 0 && antall > 0){
+            hode = finnNode(0);
+            Node<T> nåværende = hode;
+            Node<T> rNode = new Node<>(verdi, null, nåværende);
+            rNode.neste = rNode;
+            nåværende.forrige = rNode;
+            hode = rNode;
+        } else if (indeks == antall){
+            Node<T> rNode = new Node<>(verdi, hale, null);
+            if (hale != null){
+                rNode.forrige = hale;
+                hale.neste = rNode;
+                hale = rNode;
+            }
+        } else {
+            Node<T> før = null;
+            Node<T> nåværende = hode;
+            for (int i = 1; i < indeks; i++)
+                nåværende = nåværende.neste;
+            før = nåværende;
+            nåværende = nåværende.neste;
+            Node<T> rNode = new Node<>(verdi, før, nåværende);
+            før.neste = rNode;
+            rNode.neste = nåværende;
+            nåværende.forrige = rNode;
+            rNode.forrige = før;
+        }
+        antall++;
+        endringer++;
 
     }
 
     @Override
     public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException();
+        if (indeksTil(verdi) != -1)
+            return true;
+        else return false;
     }
 
     //Hjelpemetoden for oppgave 3 a)
@@ -170,7 +207,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
-        throw new UnsupportedOperationException();
+        int posisjonIndex = -1;
+        for (int i = 0; i < antall; i++) {
+            if (hent(i).equals(verdi)) {
+                posisjonIndex = i;
+                break;
+            }
+        }
+        return posisjonIndex;
     }
 
     //Oppgave 3a

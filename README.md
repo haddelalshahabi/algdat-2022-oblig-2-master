@@ -20,7 +20,6 @@ Hiba hadde promblemet med sin intellij så hun kunne ikke  commit sine oppgaver.
 Hadil sin intellij. 
 
 # Oppgavebeskrivelse
-
 I oppgave 1 vi brukte for-løkke for at den skal telle antall elementer i arrayet a. 
 
 I oppgave 2 vi brukte en string builder for å bygge ett nytt array til elemnetene som ble gitt. 

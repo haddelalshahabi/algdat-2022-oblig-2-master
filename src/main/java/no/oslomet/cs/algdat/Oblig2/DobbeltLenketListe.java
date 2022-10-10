@@ -147,15 +147,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hale = hode;
             hode.neste = null;
             hode.forrige = null;
+
         } else if (indeks == 0 && antall > 0) {
             hode = finnNode(0);
+
             Node<T> nåværende = hode;
             Node<T> rNode = new Node<>(verdi, null, nåværende);
-            rNode.neste = rNode;
+
+            rNode.neste = nåværende;
             nåværende.forrige = rNode;
             hode = rNode;
+
         } else if (indeks == antall) {
             Node<T> rNode = new Node<>(verdi, hale, null);
+
             if (hale != null) {
                 rNode.forrige = hale;
                 hale.neste = rNode;
@@ -164,10 +169,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         } else {
             Node<T> før = null;
             Node<T> nåværende = hode;
+
             for (int i = 1; i < indeks; i++)
                 nåværende = nåværende.neste;
             før = nåværende;
             nåværende = nåværende.neste;
+
             Node<T> rNode = new Node<>(verdi, før, nåværende);
             før.neste = rNode;
             rNode.neste = nåværende;
@@ -176,7 +183,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         antall++;
         endringer++;
-
     }
 
     //Oppgave 4
@@ -252,8 +258,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (verdi == null) {
             return false;
         }
+
         Node<T> slett = null;
         Node<T> Node = hode;
+
         while (Node != null) {
             if (Node.verdi.equals(verdi)) {
                 slett = Node;
@@ -262,15 +270,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 Node = Node.neste;
             }
         }
+
         if (slett == null) {
             return false;
         }
+
         slett.verdi = null;
+
         if (slett.forrige != null) {
             slett.forrige.neste = slett.neste;
         }
 
-        if (slett.forrige != null) {
+        if (slett.neste != null) {
             slett.neste.forrige = slett.forrige;
         }
 
@@ -291,10 +302,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     //oppgave 6 del2
     public T fjern(int indeks) {
         indeksKontroll(indeks, false);
+
         if (antall == 0) {
             throw new NoSuchElementException("Liste er tomt");
-
         }
+
         Node<T> slett = finnNode(indeks);
 
         if (slett == null) {

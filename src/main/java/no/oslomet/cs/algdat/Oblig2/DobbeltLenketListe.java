@@ -131,7 +131,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Objects.requireNonNull(verdi, "ikke ta null verdier");
 
          indeksKontroll(indeks, true);
-
+         
         if (indeks == 0 && antall == 0) {
             hode = new Node<>(verdi, null, null);
             hale = hode;

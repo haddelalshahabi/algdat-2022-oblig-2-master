@@ -18,7 +18,7 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 # Oppgavebeskrivelse
 
-I oppgave 1 vi brukte for-løkke for at den skal telle antall elementer i arrayet a. 
+I oppgave 1  
 
 I oppgave 2 vi brukte en string builder for å bygge ett nytt array til elemnetene som ble gitt. 
 

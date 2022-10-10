@@ -45,7 +45,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     //Sjekkliste for konstruktøren DobbeltLenketListe(T[])
     public DobbeltLenketListe(T[] a) {
-        if (a == null) {// sjekk a
+        if (a == null) {
             throw new NullPointerException("Tabellen er en null!!");
         }
 

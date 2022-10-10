@@ -18,6 +18,10 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 # Oppgavebeskrivelse
 
-I oppgave 1 så gikk vi frem ved å ...
+I oppgave 1 vi brukte for-løkke for at den skal telle antall elementer i arrayet a. 
 
-I oppgave 2 så brukte vi en ... til å ...
+I oppgave 2 vi brukte en string builder for å bygge ett nytt array til elemnetene som ble gitt. 
+
+I oppgave 3 
+
+I oppgave 4 vi brukte en for-løkke for å loope gjennom alle elemntene som som står i liste med med verdi ved hjelp av equals metode. 

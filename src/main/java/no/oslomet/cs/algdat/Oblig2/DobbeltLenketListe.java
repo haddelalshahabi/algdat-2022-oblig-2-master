@@ -129,19 +129,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi, "ikke ta null verdier");
-        /*
-        // MO KODE 5b)
-        if (indeks < 0)
-            throw new IndexOutOfBoundsException("Indeksen er negativ!");
 
-
-        if (antall == 0 && indeks > 0)
-            throw new IndexOutOfBoundsException("Kan ikke legge inn på indeks > 0 i en tom liste!");
-
-        // MO KODE FERDIG
-
-         */
-
+         indeksKontroll(indeks, true);
+         
         if (indeks == 0 && antall == 0) {
             hode = new Node<>(verdi, null, null);
             hale = hode;
@@ -436,7 +426,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if (iteratorendringer != endringer){
                 throw new ConcurrentModificationException("");
             }
-            if(!hasNext()) throw new NoSuchElementException("Ikke noen verdier!");
+
+            if(!hasNext()) {
+                throw new NoSuchElementException("Ikke noen verdier!");
+            }
+
             fjernOK = true;
             T Verdi = denne.verdi;
             denne = denne.neste;

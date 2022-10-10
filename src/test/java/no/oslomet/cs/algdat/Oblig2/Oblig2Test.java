@@ -918,7 +918,7 @@ class Oblig2Test {
 
         for (int i = 1; i <= 100_000; i++) nyliste.leggInn(i);
         long tid1 = System.currentTimeMillis();
-        for (int i = 40000; i <= 50000; i++) nyliste.fjern(i);
+        for (int i = 40000; i <= 50000; i++) nyliste.fjern(new Integer(i));
         tid1 = System.currentTimeMillis() - tid1;
         nyliste = new DobbeltLenketListe<>();
 
@@ -1065,7 +1065,7 @@ class Oblig2Test {
         }
 
         i = liste.iterator();
-        liste.fjern(8);  // bruker fjern(T) etter at iteratoren er opprettet
+        liste.fjern(new Integer(8));  // bruker fjern(T) etter at iteratoren er opprettet
 
         try {
             i.next();

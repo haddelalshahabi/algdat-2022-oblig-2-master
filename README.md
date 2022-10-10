@@ -10,11 +10,14 @@ Oppgaven er levert av følgende studenter:
 
 # Arbeidsfordeling
 I oppgaven har vi hatt følgende arbeidsfordeling:
-* Hiba har hatt hovedansvar for oppgave 2 og 3
-* Hadil har hatt hovedansvar for oppgave 8 og 9
-* Bayan har hatt hovedansvar for oppgave 5 og 6
-* Noor har hatt hovedansvar for oppgave 7 og 1
-* Shath har hatt hovedansvar for oppgave 10 og 4
+* Shath har hatt hovedansvar for oppgave 9 og 10
+* Hiba har hatt hovedansvar for oppgave 3 og 8
+* Hadil har hatt hovedansvar for oppgave 1 og 2
+* Bayan har hatt hovedansvar for oppgave 6 og 7
+* Noor har hatt hovedansvar for oppgave 4 og 5
+
+Hiba hadde promblemet med sin intellij så hun kunne ikke  commit sine oppgaver. Derfor måtte hun commit fra Bayan og
+Hadil sin intellij. 
 
 # Oppgavebeskrivelse
 
